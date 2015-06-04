@@ -8,6 +8,9 @@ Organize / write / view comparison note on multiple projects.
 - Scroll is synced in both projects.
 - Edit/View mode
 
+# Demo
+- https://1kko.github.io/multiedit
+
 # Requirements
 PHP5+, Apache, Mysql5+
 
