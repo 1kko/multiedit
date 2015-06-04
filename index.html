@@ -1,17 +1,76 @@
-<?php
-include_once("common/lib.php");
-?>
-
 <!DOCTYPE html>
 
 <meta charset = "utf-8">
 <head>
-	<title>MultiEdit - ikko</title>
-	<?php include ('common/headers.php'); ?>
+	<title>MultiEdit</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+	<!-- http://axicon.axisj.com/ -->
+	<link rel="stylesheet" type="text/css" href="axicon/axicon.min.css">
+	<link rel="stylesheet" type="text/css" href="js/jstree/themes/proton/style.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-select.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-switch.min.css">
+	<link rel="stylesheet" type="text/css" href="css/colorbox.css">
+	<link rel="stylesheet" type="text/css" href="css/custom.css" >
+	<!-- https://jquery.com/ -->
+	<script src="js/jquery-1.11.2.min.js"></script>
+	<script src="js/jquery-migrate-1.2.1.min.js"></script>
+
+	<!-- http://getbootstrap.com/ -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- http://www.tinymce.com/ -->
+	<script src="js/tinymce/tinymce.min.js"></script>
+	
+	<!-- http://www.jstree.com/ -->
+	<script src="js/jstree/jstree.min.js"></script>
+
+	<!-- http://silviomoreto.github.io/bootstrap-select/ -->
+	<script src="js/bootstrap-select.min.js"></script>
+
+	<!-- http://www.bootstrap-switch.org/ -->
+	<!-- https://github.com/nostalgiaz/bootstrap-switch -->
+	<script src="js/bootstrap-switch.min.js"></script>
+
+	<!-- http://bootstrap-growl.remabledesigns.com/ -->
+	<!-- https://github.com/mouse0270/bootstrap-notify -->
+	<script src="js/bootstrap-notify.min.js"></script>
+
+	<!-- https://github.com/carhartl/jquery-cookie -->
+	<script src="js/jqcookie/jquery.cookie.js"></script>
+
+	<!-- http://www.jacklmoore.com/colorbox/ -->
+	<!-- https://github.com/jackmoore/colorbox -->
+	<script src="js/jquery.colorbox-min.js"></script>
 </head>
 
 <body>
-	<?php include ('common/nav.php'); ?>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<a class="navbar-brand" href="index.php">
+					<i class="axi axi-settings-input-component"></i>
+					MultiEdit
+				</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="pull-right" id="navbar-collapse-1" style="margin-top: 8px;">
+				<!-- <div class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input id="text-search" type="text" class="form-control" placeholder="Search">
+					</div>
+				</div> -->
+				<select class="selectpicker" id="project_selector" multiple data-width="300px">
+				</select>
+				<input type="checkbox" name="Edit" id="toggle_EditMode" data-size="mini" data-on-text="Edit" data-off-text="Edit">
+			</div>
+		</div><!-- /.container-fluid -->
+	</nav>
+
+
 	<div class="float-div"><button class="btn btn-xs btn-primary float-button" id="btn_toggle_tree"><small>&lt;</small></button></div>
 	
 	<div class="container-fluid">
@@ -47,7 +106,10 @@ include_once("common/lib.php");
 			</div>
 		
 		<footer>
-			<?php include('common/footer.php'); ?>
+			<div class='col-xs-12' id="div_footer">
+				<p class='text-right'>
+				</p>
+			</div>
 		</footer>
 </body>
 <script type="text/javascript">
