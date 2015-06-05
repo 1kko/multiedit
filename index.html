@@ -373,9 +373,9 @@
 							'name':'proton',
 							'responsive':true
 						},
-						'plugins' : [ "themes", "html_data", "ui", "crrm", "contextmenu" ],
 						'data': treeData
 					},
+					'plugins' : [ "themes", "html_data", "ui", "crrm", "contextmenu","dnd" ],
 					'ready': function() {
 						// console.log("tree is ready");
 					}
@@ -598,12 +598,10 @@
 				data: {
 					"mode":"add",
 					"parentId":data.node.parent,
-					"name":data.text
+					"name":data.text,
+					"orderNum":data.position
 				},
 				success:function(server_data){
-					// console.log("server_data: ", server_data, "tree_data: ", data);
-					// console.log("create tree parent_id:"+parentId)
-					// console.log("change from:", data.node.id, " to ", server_data.id);
 					$('#div_tree').jstree().set_id(data.node, server_data.id);
 				}
 
@@ -623,6 +621,22 @@
 					"name":data.text
 				}
 
+			});
+		});
+
+		// Move Event on Tree
+		$('#div_tree').on("move_node.jstree", function(e, data) {
+			// console.log("move category_id:", data.node.id, "from parent:", data.old_parent, "to parent:", data.parent, "from position:",data.old_position, "to position:", data.position);
+			$.ajax({
+				url:"./php/category?",
+				dadaType:"json",
+				data:{
+					"mode":"mod",
+					"id":data.node.id,
+					"parentId":data.parent,
+					"name":data.node.text,
+					"orderNum":data.position
+				}
 			});
 		});
 
