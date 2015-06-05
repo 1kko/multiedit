@@ -8,19 +8,24 @@
 @-ms-viewport       { width: device-width; }
 .div_contents_viewer { height:500px; overflow: auto;}
 
+
+.jstree-proton .jstree-search  {
+    font-style:normal;color:#333;font-weight:400;
+    background-color: #fff34d;
+    -moz-border-radius: 5px; /* FF1+ */
+    -webkit-border-radius: 5px; /* Saf3-4 */
+    border-radius: 5px; /* Opera 10.5, IE 9, Saf5, Chrome */
+    padding:1px 1px;
+    margin:0 -1px;
+}
+
 .highlight {
     background-color: #fff34d;
     -moz-border-radius: 5px; /* FF1+ */
     -webkit-border-radius: 5px; /* Saf3-4 */
     border-radius: 5px; /* Opera 10.5, IE 9, Saf5, Chrome */
-    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* FF3.5+ */
-    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* Saf3.0+, Chrome */
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.7); /* Opera 10.5+, IE 9.0 */
-}
-
-.highlight {
-    padding:1px 4px;
-    margin:0 -4px;
+    padding:1px 1px;
+    margin:0 -1px;
 }
 
 .div_contents_viewer img {

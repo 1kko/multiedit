@@ -43,6 +43,9 @@
 	<!-- http://www.jacklmoore.com/colorbox/ -->
 	<!-- https://github.com/jackmoore/colorbox -->
 	<script src="js/jquery.colorbox-min.js"></script>
+
+	<!-- https://gist.github.com/jonraasch/563055 -->
+	<script src="js/textsearch.js"></script>
 </head>
 
 <body>
@@ -57,12 +60,12 @@
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="pull-right" id="navbar-collapse-1" style="margin-top: 8px;">
-				<!-- <div class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input id="text-search" type="text" class="form-control" placeholder="Search">
-					</div>
-				</div> -->
+			
+			<div class="pull-right navbar-form">
+				<div class="form-group">
+					<input id="text-search" type="text" class="form-control" placeholder="Search">
+				</div>
+				
 				<select class="selectpicker" id="project_selector" multiple data-width="300px">
 				</select>
 				<input type="checkbox" name="Edit" id="toggle_EditMode" data-size="mini" data-on-text="Edit" data-off-text="Edit">
@@ -77,7 +80,7 @@
 			<div class="col-xs-2 show" id="left_pane">
 				<div class="row">
 					<div class="col-xs-12">
-						<h5>Document Category</h5>
+						<h5>Category Tree</h5>
 						<div id="div_tree">
 						</div>
 					</div>
@@ -313,6 +316,7 @@
 			});
 
 			resizeViewer();
+			textSearch();
 		};
 
 		// Update Editor Content View using project_id, category_id
@@ -353,6 +357,27 @@
 				$('.content_save').hide();
 			}
 		};
+
+		function textSearch(){
+			var search_key_timeout=false;
+			$('#text-search').keyup().keyup(function () {
+				if(search_key_timeout) { 
+					clearTimeout(search_key_timeout); 
+				}
+				// Tree Search
+				search_key_timeout = setTimeout(function () {
+					var v = $('#text-search').val();
+					$('#div_tree').jstree(true).search(v);
+				}, 250);
+
+				// Text Search
+				v=$('#text-search').val();
+				$('.contents_viewer').removeHighlight();
+				if (v){
+					$('.contents_viewer').highlight(v);
+				}
+			});
+		}
 	//************ INIT ************//
 		// Loading Category Tree
 		$.ajax({
@@ -375,7 +400,7 @@
 						},
 						'data': treeData
 					},
-					'plugins' : [ "themes", "html_data", "ui", "crrm", "contextmenu","dnd" ],
+					'plugins' : [ "themes", "html_data", "ui", "crrm", "contextmenu","dnd","search" ],
 					'ready': function() {
 						// console.log("tree is ready");
 					}
@@ -412,6 +437,7 @@
 				});
 			}
 		});
+
 
 		// Loading Project Selector
 		$.ajax({
@@ -469,6 +495,9 @@
 
 		// Initialzie Sync Scroll Switch
 		$('#sync_Scroll').bootstrapSwitch();
+
+		// Enable Text Search
+		textSearch();
 
 	//************ EVENTS ************//
 
@@ -858,8 +887,8 @@
 		});
 	});
 	
-	$(window).load(function(){
-		// resizeImages();
+	$(window).load(function() {
+
 		console.log();
 	});
 </script>
