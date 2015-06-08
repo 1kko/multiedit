@@ -4,7 +4,7 @@ require_once '/var/www/html/multiedit/php/common/define.php';
 require_once '/var/www/html/multiedit/php/common/db.php';
 require_once '/var/www/html/multiedit/php/common/util.php';
 
-$mode = inputGet('mode');
+$mode = inputGet('mode', '', true);
 $resultList = array('status' => 'ok');
 
 switch ($mode) {

@@ -95,5 +95,8 @@ Icons, theme, editor, notifications, tree, lightbox, and many others are brought
 - Search Highlight Gist
   https://gist.github.com/jonraasch/563055
 
+- Favicon Generator
+  http://realfavicongenerator.net/
+
 ## Contribution
 Thanks to eisutal@gmail.com to creating backend

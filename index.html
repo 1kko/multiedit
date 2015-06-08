@@ -678,7 +678,7 @@
 		$('#div_tree').on("move_node.jstree", function(e, data) {
 			// console.log("move category_id:", data.node.id, "from parent:", data.old_parent, "to parent:", data.parent, "from position:",data.old_position, "to position:", data.position);
 			$.ajax({
-				url:"./php/category?",
+				url:"./php/category",
 				dadaType:"json",
 				data:{
 					"mode":"mod",
