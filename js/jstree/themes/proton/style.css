@@ -310,7 +310,7 @@
 }
 .jstree-proton .jstree-clicked {
   background: #3392e3;
-  color: #ffffff;
+  color: #000;
   border-radius: 3px;
   box-shadow: inset 0 0 1px #3392e3;
 }
